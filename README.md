@@ -6,3 +6,5 @@
 ## Cài đặt
 ## Link Client
 [SpeedTest_client](https://github.com/duongvanthien2209/SpeedTest_client)
+## Link Demo App
+[Typing-speed](http://typing-speed.surge.sh)
