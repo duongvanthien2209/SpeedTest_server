@@ -1,1 +1,6 @@
 node_modules
+db.js
+db.json
+thu.js
+nodemon.json
+.vscode
