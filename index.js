@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -21,8 +22,9 @@ const apiRoute = require('./routes/api.route');
 
 app.use('/api', apiRoute);
 
-app.get('/', (req,res) => res.send('All done'));
+app.get('/', (req, res) => res.send('All done'));
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+  // eslint-disable-next-line no-console
+  console.log(`Example app listening at http://localhost:${port}`);
 });
