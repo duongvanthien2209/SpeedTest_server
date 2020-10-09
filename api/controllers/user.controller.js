@@ -1,6 +1,8 @@
 // Cloudinary - Dùng để upload file lên cloud
 const cloudinary = require('cloudinary').v2;
 
+const fs = require('fs');
+
 const User = require('../../models/user.model');
 const History = require('../../models/history.model');
 
@@ -13,7 +15,7 @@ cloudinary.config({
 const Response = require('../../helpers/Response');
 
 module.exports.postCreate = async (req, res) => {
-  const { name, score } = req.body;
+  const { name, score, accuracy } = req.body;
   const { file } = req;
 
   if (!name || !score) {
@@ -30,7 +32,14 @@ module.exports.postCreate = async (req, res) => {
 
     let avatar = 'https://picsum.photos/200/300';
     if (file) {
-      const result = await cloudinary.uploader.upload(req.file.path);
+      let orgName = file.originalname || '';
+      orgName = orgName.trim().replace(/ /g, '-');
+      const fullPathInServ = file.path;
+      const newFullPath = `${fullPathInServ}-${orgName}`;
+      fs.renameSync(fullPathInServ, newFullPath);
+
+      // Upload lên cloudinary
+      const result = await cloudinary.uploader.upload(newFullPath);
       avatar = result.url;
     }
 
@@ -44,10 +53,16 @@ module.exports.postCreate = async (req, res) => {
       const history = new History({
         userId: newUser.id.toString(),
         score: parseInt(score, 10),
+        accuracy: parseInt(accuracy, 10),
         dateCreate: new Date(),
       });
 
       await history.save();
+
+      Response.success(res, {
+        message: 'Tạo thành công',
+        user: await User.findById(newUser.id.toString()),
+      });
     } else {
       user.avatar = file ? avatar : user.avatar;
       await user.save();
@@ -55,16 +70,17 @@ module.exports.postCreate = async (req, res) => {
       const history = new History({
         userId: user.id.toString(),
         score: parseInt(score, 10),
+        accuracy: parseInt(accuracy, 10),
         dateCreate: new Date(),
       });
 
       await history.save();
-    }
 
-    Response.success(res, {
-      message: 'Tạo thành công',
-      user: await User.findById(user.id.toString()),
-    });
+      Response.success(res, {
+        message: 'Tạo thành công',
+        user: await User.findById(user.id.toString()),
+      });
+    }
   } catch (error) {
     Response.error(res, {
       message: 'Có lỗi xảy ra',
@@ -79,6 +95,7 @@ module.exports.getLeaderBoard = async (req, res) => {
       .sort({
         score: -1,
         dateCreate: -1,
+        accuracy: -1,
       })
       .limit(10);
 

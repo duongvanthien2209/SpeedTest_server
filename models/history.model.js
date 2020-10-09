@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
   score: Number,
+  accuracy: Number,
   userId: String,
   dateCreate: Date,
 });
