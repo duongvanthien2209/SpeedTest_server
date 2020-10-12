@@ -25,10 +25,10 @@
 ### Thêm file .env
 ```.env
 PORT=5000
-MONGO_URL=<your_mongoDB_URI>
-CLOUD_NAME=<your_cloud_name>
-API_KEY=<your_cloud_api_key>
-API_SECRET=<your_cloud_api_secret>
+MONGO_URL= <your_mongoDB_URI>
+CLOUD_NAME= <your_cloud_name>
+API_KEY= <your_cloud_api_key>
+API_SECRET= <your_cloud_api_secret>
 ```
 ## Link Client
 [SpeedTest_client](https://github.com/duongvanthien2209/SpeedTest_client)
