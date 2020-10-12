@@ -19,6 +19,8 @@
 * Thông báo khi thêm thông tin thành công
 * Thông báo khi có lỗi hệ thống
 ## Cài đặt
+### Install server dependencies
+`npm install`
 ## Link Client
 [SpeedTest_client](https://github.com/duongvanthien2209/SpeedTest_client)
 ## Link Demo App
