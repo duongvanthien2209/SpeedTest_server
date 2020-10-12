@@ -9,7 +9,7 @@
 ***
 * Lưu lại thông tin người dùng
 * Kiểm tra người dùng có tồn tại thông qua tên
-### Profile
+### Thông tin người dùng
 ***
 * Cập nhật ảnh đại diện
 ### Post
