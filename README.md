@@ -4,11 +4,14 @@
 * Live API tại [Heroku](https://typing-speed-3324.herokuapp.com)
 ## Chức năng chính
 ### Auth
+***
 * Lưu lại thông tin người dùng
 * Kiểm tra người dùng có tồn tại thông qua tên
 ### Profile
+***
 * Cập nhật ảnh đại diện
 ### Post
+***
 * Thêm người dùng
 * Thay đổi ảnh đại diện
 * Thêm thành tích của người dùng
@@ -16,6 +19,7 @@
 * Lấy danh sách 10 người có thành tích cao nhất
 * Xem lịch sử của người dùng
 ### Thông báo
+***
 * Thông báo khi thêm thông tin thành công
 * Thông báo khi có lỗi hệ thống
 ## Cài đặt
@@ -23,6 +27,7 @@
 ***
 `npm install`
 ### Thêm file .env
+***
 ```.env
 PORT=5000
 MONGO_URL= <your_mongoDB_URI>
