@@ -2,6 +2,8 @@
 ## Demo Live
 * Live App tại [Surge](http://typing-speed.surge.sh)
 * Live API tại [Heroku](https://typing-speed-3324.herokuapp.com)
+## Link Client
+[SpeedTest_client](https://github.com/duongvanthien2209/SpeedTest_client)
 ## Chức năng chính
 ### Auth
 ***
@@ -35,7 +37,19 @@ CLOUD_NAME= <your_cloud_name>
 API_KEY= <your_cloud_api_key>
 API_SECRET= <your_cloud_api_secret>
 ```
-## Link Client
-[SpeedTest_client](https://github.com/duongvanthien2209/SpeedTest_client)
-## Link Demo App
-[Typing-speed](http://typing-speed.surge.sh)
+### Install client dependencies
+***
+`npm install`
+### Run Express in server
+***
+`npm run dev`
+### Run React in client
+***
+`npm start`
+### Build for production
+*** 
+`npm run build`
+## Thông tin
+### Author
+***
+Van Thien
