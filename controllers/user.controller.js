@@ -28,7 +28,7 @@ module.exports.postCreate = async (req, res) => {
       orgName = orgName.trim().replace(/ /g, '-');
       const fullPathInServ = file.path;
       const newFullPath = `${fullPathInServ}-${orgName}`;
-      await fs.rename(fullPathInServ, newFullPath);
+      fs.rename(fullPathInServ, newFullPath);
 
       // Upload lên cloudinary
       avatar = await uploadImage(newFullPath);
