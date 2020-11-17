@@ -4,3 +4,4 @@ db.json
 thu.js
 nodemon.json
 .vscode
+.env
