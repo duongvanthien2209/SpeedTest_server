@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('promise-fs');
 const uploadImage = require('../helpers/handleCloudinary');
 
 const User = require('../models/user.model');
@@ -28,7 +28,7 @@ module.exports.postCreate = async (req, res) => {
       orgName = orgName.trim().replace(/ /g, '-');
       const fullPathInServ = file.path;
       const newFullPath = `${fullPathInServ}-${orgName}`;
-      fs.renameSync(fullPathInServ, newFullPath);
+      await fs.rename(fullPathInServ, newFullPath);
 
       // Upload lên cloudinary
       avatar = await uploadImage(newFullPath);
