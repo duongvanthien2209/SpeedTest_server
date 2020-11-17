@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const fs = require('promise-fs');
 const uploadImage = require('../helpers/handleCloudinary');
 
@@ -42,7 +43,7 @@ module.exports.postCreate = async (req, res) => {
       await newUser.save();
 
       const history = new History({
-        userId: newUser.id.toString(),
+        userId: newUser._id,
         score: parseInt(score, 10),
         accuracy: parseInt(accuracy, 10),
         dateCreate: new Date(),
@@ -52,14 +53,14 @@ module.exports.postCreate = async (req, res) => {
 
       Response.success(res, {
         message: 'Tạo thành công',
-        user: await User.findById(newUser.id.toString()),
+        user: await User.findById(newUser._id),
       });
     } else {
       user.avatar = file ? avatar : user.avatar;
       await user.save();
 
       const history = new History({
-        userId: user.id.toString(),
+        userId: user._id,
         score: parseInt(score, 10),
         accuracy: parseInt(accuracy, 10),
         dateCreate: new Date(),
@@ -69,7 +70,7 @@ module.exports.postCreate = async (req, res) => {
 
       Response.success(res, {
         message: 'Tạo thành công',
-        user: await User.findById(user.id.toString()),
+        user: await User.findById(user._id),
       });
     }
   } catch (error) {
@@ -121,7 +122,8 @@ module.exports.getHistory = async (req, res) => {
       throw new Error('Có lỗi xảy ra');
     }
 
-    const historys = await History.find({ userId: id });
+    const user = await User.findById(id);
+    const historys = await History.find({ userId: user._id });
 
     Response.success(res, {
       historys,

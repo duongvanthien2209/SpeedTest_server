@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
-const schema = mongoose.Schema({
+const { Schema } = mongoose;
+
+const schema = Schema({
   score: Number,
   accuracy: Number,
-  userId: String,
+  userId: { type: Schema.Types.ObjectId, ref: 'users' },
   dateCreate: Date,
 });
 
