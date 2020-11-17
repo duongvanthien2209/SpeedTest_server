@@ -1,5 +1,5 @@
-const Response = require('../../helpers/Response');
-const Text = require('../../models/text.model');
+const Response = require('../helpers/Response');
+const Text = require('../models/text.model');
 
 module.exports.getRandomText = async (req, res) => {
   try {

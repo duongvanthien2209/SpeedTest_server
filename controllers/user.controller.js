@@ -3,8 +3,8 @@ const cloudinary = require('cloudinary').v2;
 
 const fs = require('fs');
 
-const User = require('../../models/user.model');
-const History = require('../../models/history.model');
+const User = require('../models/user.model');
+const History = require('../models/history.model');
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -12,7 +12,7 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
-const Response = require('../../helpers/Response');
+const Response = require('../helpers/Response');
 
 module.exports.postCreate = async (req, res) => {
   const { name, score, accuracy } = req.body;
