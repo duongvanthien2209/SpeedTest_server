@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const Response = require('../helpers/Response');
 const Text = require('../models/text.model');
 
@@ -8,6 +9,7 @@ module.exports.getRandomText = async (req, res) => {
       text: texts[Math.floor(Math.random() * 100)].text,
     });
   } catch (error) {
+    console.error(error);
     Response.error(res, {
       message: 'Có lỗi xảy ra',
     });

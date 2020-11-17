@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 const fs = require('promise-fs');
 const uploadImage = require('../helpers/handleCloudinary');
@@ -74,6 +75,7 @@ module.exports.postCreate = async (req, res) => {
       });
     }
   } catch (error) {
+    console.error(error);
     Response.error(res, {
       message: 'Có lỗi xảy ra',
     });
@@ -108,6 +110,7 @@ module.exports.getLeaderBoard = async (req, res) => {
       users: result,
     });
   } catch (error) {
+    console.error(error);
     Response.error(res, {
       message: 'Có lỗi xảy ra',
     });
@@ -129,6 +132,7 @@ module.exports.getHistory = async (req, res) => {
       historys,
     });
   } catch (error) {
+    console.error(error);
     Response.error(res, {
       message: 'Có lỗi xảy ra',
     });
