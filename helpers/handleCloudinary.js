@@ -7,4 +7,9 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
-module.exports = cloudinary;
+async function uploadImage(path) {
+  const result = await cloudinary.uploader.upload(path);
+  return result.url;
+}
+
+module.exports = uploadImage;

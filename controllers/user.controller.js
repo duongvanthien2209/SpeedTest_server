@@ -1,5 +1,5 @@
 const fs = require('fs');
-const cloudinary = require('../helpers/handleCloudinary');
+const uploadImage = require('../helpers/handleCloudinary');
 
 const User = require('../models/user.model');
 const History = require('../models/history.model');
@@ -31,8 +31,7 @@ module.exports.postCreate = async (req, res) => {
       fs.renameSync(fullPathInServ, newFullPath);
 
       // Upload lên cloudinary
-      const result = await cloudinary.uploader.upload(newFullPath);
-      avatar = result.url;
+      avatar = await uploadImage(newFullPath);
     }
 
     if (!user) {
