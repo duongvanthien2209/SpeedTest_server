@@ -91,6 +91,7 @@ module.exports.getLeaderBoard = async (req, res) => {
         dateCreate: -1,
         accuracy: -1,
       })
+      .populate('userId')
       .limit(10);
 
     // eslint-disable-next-line no-restricted-syntax

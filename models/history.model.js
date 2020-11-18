@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const schema = Schema({
   score: Number,
   accuracy: Number,
-  userId: { type: Schema.Types.ObjectId, ref: 'users' },
+  userId: { type: Schema.Types.ObjectId, ref: 'User' },
   dateCreate: Date,
 });
 
