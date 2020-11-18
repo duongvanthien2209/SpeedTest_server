@@ -1,7 +1,7 @@
 # SpeedTest_server
 ## Demo Live
 * Live App tại [Surge](http://typing-speed.surge.sh)
-* Live API tại [Heroku](https://typing-speed-3324.herokuapp.com)
+* Live API tại [Heroku](https://typing-speed-app-1.herokuapp.com)
 ## Link Client
 [SpeedTest_client](https://github.com/duongvanthien2209/SpeedTest_client)
 ## Chức năng chính
