@@ -84,31 +84,16 @@ module.exports.postCreate = async (req, res) => {
 
 module.exports.getLeaderBoard = async (req, res) => {
   try {
-    const result = [];
     const historys = await History.find()
+      .populate('userId')
       .sort({
         score: -1,
-        dateCreate: -1,
         accuracy: -1,
       })
-      .populate('userId')
       .limit(10);
 
-    // eslint-disable-next-line no-restricted-syntax
-    for (const item of historys) {
-      // eslint-disable-next-line no-await-in-loop
-      const user = await User.findById(item.userId);
-
-      result.push({
-        // eslint-disable-next-line no-underscore-dangle
-        ...item._doc,
-        name: user.name,
-        avatar: user.avatar,
-      });
-    }
-
     Response.success(res, {
-      users: result,
+      users: historys,
     });
   } catch (error) {
     console.error(error);
@@ -127,7 +112,7 @@ module.exports.getHistory = async (req, res) => {
     }
 
     const user = await User.findById(id);
-    const historys = await History.find({ userId: user._id });
+    const historys = await History.find({ userId: user._id }).sort({ dateCreate: -1 });
 
     Response.success(res, {
       historys,
